@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="CustomShapeAppearance">
+        <item name="neumorph_cornerFamily">rounded</item>
+        <!-- Or if wants different radii depending on the corner. -->
+        <item name="neumorph_cornerSizeTopLeft">15dp</item>
+        <item name="neumorph_cornerSizeTopRight">15dp</item>
+        <item name="neumorph_cornerSizeBottomLeft">15dp</item>
+        <item name="neumorph_cornerSizeBottomRight">15dp</item>
+    </style>
+
+    <style name="neomurp_btn_style">
+        <item name="android:textSize">20sp</item>
+        <item name="android:gravity">center</item>
+        <item name="neumorph_lightSource">rightBottom</item>
+        <item name="neumorph_shapeType">flat</item>
+        <item name="neumorph_strokeWidth">0.2dp</item>
+        <item name="neumorph_strokeColor">#2F3A47</item>
+        <item name="android:layout_width">90dp</item>
+        <item name="android:layout_height">90dp</item>
+        <item name="android:theme">@style/CustomShapeAppearance</item>
+    </style>
+</resources>
