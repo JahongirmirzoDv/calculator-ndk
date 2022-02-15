@@ -34,21 +34,27 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         setContentView(binding.root)
         WindowCompat.setDecorFitsSystemWindows(this.window, false)
         viewModel = ViewModelProvider(this)[MainViewModel::class.java]
+        SharedPref.getInstanceDis(this)
         if (savedInstanceState != null) {
             if (savedInstanceState.getBoolean("data")) {
                 binding.switch1.isOn = true
             }
         }
+        if (SharedPref.user == true) {
+            binding.switch1.isOn = true
+        }
 
         binding.switch1.setOnToggledListener { toggleableView, isOn ->
             if (isOn) {
                 ison = true
+                SharedPref.user = true
                 GlobalScope.launch(Dispatchers.Main) {
                     delay(500)
                     AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
                 }
             } else {
                 ison = false
+                SharedPref.user = false
                 GlobalScope.launch(Dispatchers.Main) {
                     delay(500)
                     AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
@@ -97,7 +103,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             binding.result.text = result
             if (result.contains('.')) {
                 val substring = result.substring(0, result.indexOf('.'))
-                val substring1 = result.substring(substring.length+1, result.length)
+                val substring1 = result.substring(substring.length + 1, result.length)
                 Log.e(TAG, "asd: ${substring1}")
                 if (substring1 != "0") {
                     binding.result.text = result
@@ -170,7 +176,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                         val result = toFloat.toString()
                         if (result.contains('.')) {
                             val substring = result.substring(0, result.indexOf('.'))
-                            val substring1 = result.substring(substring.length+1, result.length)
+                            val substring1 = result.substring(substring.length + 1, result.length)
                             Log.e(TAG, "asd: ${substring1}")
                             if (substring1 != "0") {
                                 binding.result.text = result
