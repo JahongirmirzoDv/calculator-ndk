@@ -97,7 +97,13 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             binding.result.text = result
             if (result.contains('.')) {
                 val substring = result.substring(0, result.indexOf('.'))
-                binding.result.text = substring
+                val substring1 = result.substring(substring.length+1, result.length)
+                Log.e(TAG, "asd: ${substring1}")
+                if (substring1 != "0") {
+                    binding.result.text = result
+                } else {
+                    binding.result.text = substring
+                }
             } else {
                 binding.result.text = result
             }
@@ -164,7 +170,13 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                         val result = toFloat.toString()
                         if (result.contains('.')) {
                             val substring = result.substring(0, result.indexOf('.'))
-                            binding.expression.setText(substring)
+                            val substring1 = result.substring(substring.length+1, result.length)
+                            Log.e(TAG, "asd: ${substring1}")
+                            if (substring1 != "0") {
+                                binding.result.text = result
+                            } else {
+                                binding.result.text = substring
+                            }
                         } else {
                             binding.expression.setText(result)
                         }
